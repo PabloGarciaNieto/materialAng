@@ -1,3 +1,6 @@
+# Adding a material component
+ng gererate @angular/material:material-nav --name=main-nav
+
 # MaterialAng
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
