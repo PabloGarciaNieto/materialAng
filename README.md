@@ -1,5 +1,5 @@
 # Adding a material component
-ng gererate @angular/material:material-nav --name=main-nav
+ng generate @angular/material:material-nav --name=main-nav
 
 # MaterialAng
 
