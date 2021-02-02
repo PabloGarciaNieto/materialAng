@@ -6,19 +6,11 @@
     width: 200px;
 }
 
-.sidenav .mat-toolbar {
-    background: inherit;
-}
-
 .mat-toolbar.mat-primary {
     position: sticky;
     top: 0;
     z-index: 1;
-}
-
-.bgc {
-    background-color: #673ab7 !important;
-    color: #fff !important;
+    color: #1b5e20;
 }
 
 .hidden {
