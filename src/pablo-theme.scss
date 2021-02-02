@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+@include mat-core();
+$pablo-theme-primary: mat-palette($mat-light-green, 400, A200, 700);
+$pablo-theme-accent: mat-palette($mat-pink, A100, 300, A200);
+$pablo-theme-warn: mat-palette($mat-deep-orange, 600);
+$pablo-theme: mat-light-theme(( color: ( primary: $pablo-theme-primary, accent: $pablo-theme-accent, warn: $pablo-theme-warn, )));
+@include angular-material-theme($pablo-theme);
