@@ -10,10 +10,10 @@
     <mat-sidenav-content>
         <mat-toolbar color="primary">
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon" color="accent">menu</mat-icon>
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
             <span>Material</span>
-            <mat-icon>palette</mat-icon>
+            <mat-icon *ngIf="!(isHandset$ | async)">palette</mat-icon>
             <span class="spacer"></span>
             <div *ngIf="!(isHandset$ | async)" class="no-handset-links">
                 <a href="#">Link 1</a>
@@ -23,5 +23,11 @@
         </mat-toolbar>
         <!-- Add Content Here -->
         <ng-content></ng-content>
+        <div class="button-container">
+            <button mat-fab color="primary">pri-co</button>
+            <button mat-flat-button color="warn">Warn-color</button>
+            <button mat-stroked-button>Text-color</button>
+            <button mat-raised-button color="accent">Accent-color</button>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

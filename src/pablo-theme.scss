@@ -1,16 +1,26 @@
+//CUSTOM THEME
 @import '~@angular/material/theming';
 @include mat-core();
-$pablo-primary: mat-palette($mat-light-green, A100, 700);
-$pablo-accent: mat-palette($mat-pink, A200);
-$pablo-warn: mat-palette($mat-deep-orange, 600);
+$pablo-primary: mat-palette($mat-lime, 300, 700);
+$pablo-accent: mat-palette($mat-pink, 900);
+$pablo-warn: mat-palette($mat-pink, 500);
 $pablo-theme: mat-light-theme($pablo-primary, $pablo-accent, $pablo-warn);
 @include angular-material-theme($pablo-theme);
+//Build your custom foreground using a custom function returning foreground map as defined in @angular/material/_theming.scss -> $mat-light-theme-foreground function.
+//You can play with the map and define only the fields you want and leave the others as default.
 @function pablo-light-theme-foreground($color) {
-    @return ( base: $color, divider: $black-12-opacity, dividers: $black-12-opacity, disabled: rgba($color, 0.38), disabled-button: rgba($color, 0.38), disabled-text: rgba($color, 0.38), hint-text: rgba($color, 0.38), secondary-text: rgba($color, 0.54), icon: rgba($color, 0.54), icons: rgba($color, 0.54), text: rgba($color, 0.87), slider-min: rgba($color, 0.87), slider-off: rgba($color, 0.26), slider-off-active: rgba($color, 0.38), );
+    @return ( base: $color, divider: $black-12-opacity, dividers: $black-12-opacity, disabled: rgba($color, 0.38), disabled-button: rgba($color, 0.38), disabled-text: rgba($color, 0.38), hint-text: rgba($color, 0.38), secondary-text: rgba(136, 14, 79, 1), icon: rgba($color, 0.54), icons: rgba($color, 0.54), text: rgba($color, 0.87), slider-min: rgba($color, 0.87), slider-off: rgba($color, 0.26), slider-off-active: rgba($color, 0.38), );
 }
 
 ;
-$white-foreground: pablo-light-theme-foreground(#1b5e20);
+//Merge the previously created theme with just the foreground map and initialize your custom theme.
+//Note: Since all maps in SCSS are immutable the map-merge() returns new map instance and DOES NOT modify the map in place - thus we have another variable $my-app-theme-custom to hold the result theme.
+$white-foreground: pablo-light-theme-foreground(#1b5e5a);
 $my-app-theme-custom: map-merge($pablo-theme, (foreground: $white-foreground));
 @include angular-material-theme($my-app-theme-custom);
-//TODO custom typography
+//CUSTOM TYPOGRAPHY
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+//Adding it to the index.html is required!!!
+$custom-typography: mat-typography-config( $font-family: 'Montserrat, sans-serif', $headline: mat-typography-level(32px, 48px, 700), $body-1: mat-typography-level(16px, 24px, 500));
+@include angular-material-typography($custom-typography);

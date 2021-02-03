@@ -10,7 +10,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    color: #1b5e20;
+    color: #880e4f;
 }
 
 .hidden {
@@ -24,7 +24,20 @@
 .no-handset-links {
     a {
         margin-right: 2em;
-        color: #fff;
+        color: #880e4f;
         text-decoration: none;
+    }
+}
+
+.button-container {
+    width: inherit; //hereda el ancho del componente de material dentro del que está
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    @media only screen and (max-width: 768px) {
+        height: 300px;
+        flex-direction: column;
+        align-content: center;
     }
 }
