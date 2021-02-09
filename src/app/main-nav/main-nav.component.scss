@@ -10,7 +10,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    color: #880e4f;
+    //color: #880e4f;
 }
 
 .hidden {
@@ -24,7 +24,8 @@
 .no-handset-links {
     a {
         margin-right: 2em;
-        color: #880e4f;
+        font-size: 1rem;
+        color: #fff;
         text-decoration: none;
     }
 }

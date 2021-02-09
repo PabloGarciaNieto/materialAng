@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { DataTableDataSource, DataTableItem } from './data-table-datasource';
 
+
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
@@ -16,7 +17,7 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   dataSource: DataTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'amount'];
+  displayedColumns = ['code', 'name', 'price'];
 
   ngOnInit() {
     this.dataSource = new DataTableDataSource();

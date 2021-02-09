@@ -7,32 +7,42 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 // TODO: Replace this with your own data model type
 export interface DataTableItem {
   name: string;
-  id: number;
-  amount: number;
+  code: string;
+  price: number;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataTableItem[] = [
-  {id: 1, name: 'Hydrogen', amount: 2},
-  {id: 2, name: 'Helium', amount: 5},
-  {id: 3, name: 'Lithium', amount: 3},
-  {id: 4, name: 'Beryllium', amount: 1},
-  {id: 5, name: 'Boron', amount: 4},
-/*   {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'}, */
+  {code: 'PR47', name: 'Permanent Red', price: 22.99},
+  {code: 'PR12', name: 'Permanent Bordeaux', price: 15.99},
+  {code: 'PR69', name: 'Lithol Red', price: 13.95},
+  {code: 'PR202', name: 'Quinacridone Crimson', price: 21.99},
+  {code: 'PR2', name: 'Naphthol Red', price: 14.95},
+  {code: 'PO3', name: 'Hansa Orange', price: 18.99},
+  {code: 'PO22', name: 'Versal Orange', price: 21.95},
+  {code: 'PO38', name: 'Naphthol Orange', price: 15.99},
+  {code: 'PO77', name: 'Vat Orange', price: 20.99},
+  {code: 'PY5', name: 'Hansa Yellow', price: 21.95},
+  {code: 'PY9', name: 'Azo Yellow', price: 17.99},
+  {code: 'PY36', name: 'Zinc Yellow', price: 19.99},
+  {code: 'PY41', name: 'Naples Yellow', price: 25.95},
+  {code: 'PY63', name: 'Suimei Yellow', price: 18.95},
+  {code: 'PG15', name: 'Chrome Green', price: 15.99},
+  {code: 'PG18', name: 'Viridian', price: 13.95},
+  {code: 'PG42', name: 'Phthalocyanine Green', price: 21.99},
+  {code: 'PG48', name: 'Chromocyanine Green', price: 14.95},
+  {code: 'PB15', name: 'Phthalocyanine Blue', price: 13.95},
+  {code: 'PB27', name: 'Prussian Blue', price: 21.99},
+  {code: 'PB28', name: 'Cobalt Blue', price: 14.95},
+  {code: 'PB35', name: 'Cerulean Blue', price: 18.99},
+  {code: 'PO77', name: 'Vat Orange', price: 20.99},
+  {code: 'PBr6', name: 'Brown Ochre', price: 21.95},
+  {code: 'PBr7', name: 'Burnt Sienna', price: 17.99},
+  {code: 'PBr8', name: 'Raw Umber', price: 19.99},
+  {code: 'PW6', name: 'Titanium White', price: 17.99},
+  {code: 'PW16', name: 'Lead White', price: 19.99},
+  {code: 'PBk7', name: 'Ivory Black', price: 17.99},
+  {code: 'PBk9', name: 'Bone Black ', price: 19.99},
 ];
 
 /**
@@ -96,8 +106,8 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
         case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
-        case 'amount': return compare(+a.amount, +b.amount, isAsc);
+        case 'code': return compare(a.code, b.code, isAsc);
+        case 'price': return compare(+a.price, +b.price, isAsc);
         default: return 0;
       }
     });

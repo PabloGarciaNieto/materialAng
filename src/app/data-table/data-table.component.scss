@@ -10,3 +10,9 @@
 .pointer {
     cursor: pointer;
 }
+
+.data-table td {
+    @media only screen and (max-width: 500px) {
+        font-size: 0.7rem;
+    }
+}

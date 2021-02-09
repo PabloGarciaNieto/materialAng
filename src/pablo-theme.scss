@@ -1,8 +1,8 @@
 //CUSTOM THEME
 @import '~@angular/material/theming';
 @include mat-core();
-$pablo-primary: mat-palette($mat-lime, 300, 700);
-$pablo-accent: mat-palette($mat-pink, 900);
+$pablo-primary: mat-palette($mat-pink, 900);
+$pablo-accent: mat-palette($mat-lime, 300, 700);
 $pablo-warn: mat-palette($mat-pink, 500);
 $pablo-theme: mat-light-theme($pablo-primary, $pablo-accent, $pablo-warn);
 @include angular-material-theme($pablo-theme);
@@ -15,7 +15,7 @@ $pablo-theme: mat-light-theme($pablo-primary, $pablo-accent, $pablo-warn);
 ;
 //Merge the previously created theme with just the foreground map and initialize your custom theme.
 //Note: Since all maps in SCSS are immutable the map-merge() returns new map instance and DOES NOT modify the map in place - thus we have another variable $my-app-theme-custom to hold the result theme.
-$white-foreground: pablo-light-theme-foreground(#1b5e5a);
+$white-foreground: pablo-light-theme-foreground(rgb(77, 77, 77));
 $my-app-theme-custom: map-merge($pablo-theme, (foreground: $white-foreground));
 @include angular-material-theme($my-app-theme-custom);
 //CUSTOM TYPOGRAPHY
