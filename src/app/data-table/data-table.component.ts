@@ -29,6 +29,7 @@ export class DataTableComponent implements AfterViewInit, OnInit {
     this.table.dataSource = this.dataSource;
   }
   click(toPrint) {
-    console.log(toPrint)
+    console.log(toPrint);
+    console.log(this.dataSource.data);
   }
 }

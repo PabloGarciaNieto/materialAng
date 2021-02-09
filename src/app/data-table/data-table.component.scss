@@ -11,6 +11,20 @@
     cursor: pointer;
 }
 
+.aeterna {
+    position: relative;
+    cursor: pointer;
+}
+
+.lux {
+    position: absolute;
+    width: 15px;
+    height: 25px;
+    top: 50%;
+    transform: translateY(-12px);
+    right: 5%;
+}
+
 .data-table td {
     @media only screen and (max-width: 500px) {
         font-size: 0.7rem;
