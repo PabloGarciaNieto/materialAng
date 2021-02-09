@@ -15,13 +15,17 @@ import { DataTableComponent } from './data-table/data-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
+import { CardComponent } from './card/card.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
-    DataTableComponent
+    DataTableComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
