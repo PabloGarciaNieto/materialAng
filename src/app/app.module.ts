@@ -17,7 +17,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
 import { CardComponent } from './card/card.component';
-
+import { MatStepperModule } from '@angular/material/stepper';
+import { StepperComponent } from './stepper/stepper.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +29,8 @@ import { CardComponent } from './card/card.component';
     AppComponent,
     MainNavComponent,
     DataTableComponent,
-    CardComponent
+    CardComponent,
+    StepperComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,11 @@ import { CardComponent } from './card/card.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
