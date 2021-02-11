@@ -3,19 +3,19 @@
         <!-- Code Column -->
         <ng-container matColumnDef="code">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
-            <td (click)="click(row.color)" class="aeterna" mat-cell *matCellDef="let row">{{row.code}}<span class="lux" [ngStyle]="{'background-color':row.color}"></span></td>
+            <td (click)="showColor(row.color)" class="aeterna" mat-cell *matCellDef="let row">{{row.code}}<span class="lux" [ngStyle]="{'background-color':row.color}"></span></td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-            <td (click)="click(row.color)" mat-cell *matCellDef="let row" class="pointer">{{row.name}}</td>
+            <td (click)="showColor(row.color)" mat-cell *matCellDef="let row" class="pointer">{{row.name}}</td>
         </ng-container>
 
         <!-- Price Column -->
         <ng-container matColumnDef="price">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
-            <td (click)="click(row.color)" mat-cell *matCellDef="let row" class="pointer">{{row.price}} €</td>
+            <td (click)="showColor(row.color)" mat-cell *matCellDef="let row" class="pointer">{{row.price}} €</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

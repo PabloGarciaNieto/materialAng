@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -15,7 +15,8 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<DataTableItem>;
   dataSource: DataTableDataSource;
-
+  @Input() showCard: boolean;
+  @Output() openCard = new EventEmitter<boolean>();
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['code', 'name', 'price'];
 
@@ -28,8 +29,9 @@ export class DataTableComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-  click(toPrint) {
+  showColor(toPrint) {
     console.log(toPrint);
     console.log(this.dataSource.data);
+    this.openCard.emit(true);
   }
 }
