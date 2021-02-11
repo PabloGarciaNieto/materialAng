@@ -6,6 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
+@Input() colorInfo: any;
 @Input() showCard: boolean = false;
 @Output() closeCard = new EventEmitter<boolean>();
   constructor() { }

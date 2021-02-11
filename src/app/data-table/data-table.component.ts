@@ -17,9 +17,10 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   dataSource: DataTableDataSource;
   @Input() showCard: boolean;
   @Output() openCard = new EventEmitter<boolean>();
+  @Output() colorInfo = new EventEmitter<{}>();
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['code', 'name', 'price'];
-
+  public color: {} = {};
   ngOnInit() {
     this.dataSource = new DataTableDataSource();
   }
@@ -29,9 +30,11 @@ export class DataTableComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-  showColor(toPrint) {
-    console.log(toPrint);
-    console.log(this.dataSource.data);
+  showColor(col) {
+    console.log(col);
+    this.color = this.dataSource.data.find(x => x.color === col);
+    console.log(this.color);
+    this.colorInfo.emit(this.color);
     this.openCard.emit(true);
   }
 }

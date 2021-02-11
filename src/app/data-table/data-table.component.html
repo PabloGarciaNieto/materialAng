@@ -3,7 +3,7 @@
         <!-- Code Column -->
         <ng-container matColumnDef="code">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
-            <td (click)="showColor(row.color)" class="aeterna" mat-cell *matCellDef="let row">{{row.code}}<span class="lux" [ngStyle]="{'background-color':row.color}"></span></td>
+            <td (click)="showColor(row.color)" class="tile-container" mat-cell *matCellDef="let row">{{row.code}}<span class="color-tile" [ngStyle]="{'background-color':row.color}"></span></td>
         </ng-container>
 
         <!-- Name Column -->

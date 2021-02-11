@@ -1,6 +1,9 @@
 .data-table {
     width: 80%;
     margin: 20px auto;
+    @media only screen and (max-width: 500px) {
+        width: 100%;
+    }
 }
 
 .full-width-table {
@@ -11,12 +14,12 @@
     cursor: pointer;
 }
 
-.aeterna {
+.tile-container {
     position: relative;
     cursor: pointer;
 }
 
-.lux {
+.color-tile {
     position: absolute;
     width: 15px;
     height: 25px;
