@@ -1,3 +1,7 @@
+<div class="title-container" *ngIf="!(isHandset$ | async)">
+    <h1>Wellcome to the payment process</h1>
+    <span (click)="closeStepper()" class="close-stepper">&times;</span>
+</div>
 <mat-horizontal-stepper linear #stepper *ngIf="!(isHandset$ | async)">
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
@@ -36,15 +40,19 @@
         </form>
     </mat-step>
     <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+        <ng-template matStepLabel>Payment</ng-template>
+        <p class="advise-text">You will be charge right after pressing the payment button.</p>
+        <div class="buttons-container">
+            <button mat-stroked-button matStepperPrevious color="primary">Back</button>
+            <button mat-raised-button color="warn" (click)="letChargeSomeMoney()">Payment</button>
         </div>
     </mat-step>
 </mat-horizontal-stepper>
 <!--////////////////////////////////////////////////////////////////////////////////  -->
+<div class="title-container title-container__handset" *ngIf="isHandset$ | async">
+    <span (click)="closeStepper()" class="close-stepper close-stepper__handset">&times;</span>
+    <h3 class="handset-title">Wellcome to the payment process</h3>
+</div>
 <mat-vertical-stepper linear #stepper *ngIf="isHandset$ | async">
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
@@ -82,12 +90,12 @@
             </div>
         </form>
     </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+    <mat-step class="putas">
+        <ng-template matStepLabel>Payment</ng-template>
+        <p class="advise-text advise-text__handset">You will be charge right after pressing the payment button.</p>
+        <div class="buttons-container buttons-container__handset">
+            <button mat-stroked-button color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button color="warn" (click)="letChargeSomeMoney()">Payment</button>
         </div>
     </mat-step>
 </mat-vertical-stepper>

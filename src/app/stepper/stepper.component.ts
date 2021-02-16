@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
@@ -20,6 +20,8 @@ export class StepperComponent implements OnInit {
    shareReplay()
  );
 //--------
+@Output() showStepper = new EventEmitter<boolean>();
+
   constructor(private _formBuilder: FormBuilder, private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit() {
@@ -32,6 +34,13 @@ export class StepperComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
+  }
+
+  letChargeSomeMoney() {
+    this.showStepper.emit(false);
+  }
+  closeStepper() {
+    this.showStepper.emit(false);
   }
 
 }

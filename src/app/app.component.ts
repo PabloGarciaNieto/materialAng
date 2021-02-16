@@ -10,7 +10,7 @@ export class AppComponent {
 
   public showCard: boolean = false;
   public colorInfo: {} = {};
-
+  public showStepper: boolean = false;
   showColorCard($event: boolean) {
     this.showCard = $event;
   }
@@ -22,7 +22,12 @@ export class AppComponent {
   theColorInfo($event: {}) {
     this.colorInfo = $event;
   }
-
+  showTheStepper($event: boolean) {
+    this.showStepper = $event;
+  }
+  closeTheStepper($event: boolean) {
+    this.showStepper = $event;
+  }
 
 
 }

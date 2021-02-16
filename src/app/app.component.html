@@ -1,5 +1,5 @@
-<app-card *ngIf="showCard" class="pos-abs" [colorInfo]="colorInfo" [showCard]="showCard" (closeCard)="closeColorCard($event)"></app-card>
+<app-card *ngIf="showCard" class="pos-abs" [colorInfo]="colorInfo" [showCard]="showCard" (closeCard)="closeColorCard($event)" (showStepper)="showTheStepper($event)"></app-card>
 <app-main-nav>
-    <app-data-table class="pos-zindex" (colorInfo)="theColorInfo($event)" [showCard]="showCard" (openCard)="showColorCard($event)"></app-data-table>
+    <app-stepper *ngIf="showStepper" (showStepper)="closeTheStepper($event)"></app-stepper>
+    <app-data-table *ngIf="!showStepper" class="pos-zindex" (colorInfo)="theColorInfo($event)" [showCard]="showCard" (openCard)="showColorCard($event)"></app-data-table>
 </app-main-nav>
-<app-stepper></app-stepper>

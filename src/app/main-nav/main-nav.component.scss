@@ -29,3 +29,15 @@
         text-decoration: none;
     }
 }
+
+.hero {
+    width: inherit;
+    height: 600px;
+    background-image: url('./../../assets/images/a-row-of-oil-paint-tubes-93192549-58178e3b3df78cc2e8f73a96.jpg');
+    background-repeat: no-repeat;
+    background-position: center 20px;
+    background-size: contain;
+    &__handset {
+        height: 300px;
+    }
+}
