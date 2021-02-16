@@ -14,18 +14,19 @@
     cursor: pointer;
 }
 
-.tile-container {
+.sample-container {
     position: relative;
     cursor: pointer;
 }
 
-.color-tile {
+.color-sample {
     position: absolute;
-    width: 15px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     top: 50%;
     transform: translateY(-12px);
     right: 5%;
+    border-radius: 50%;
 }
 
 .data-table td {
