@@ -22,7 +22,7 @@
                 <a href="#">Contact</a>
             </div>
         </mat-toolbar>
-        <div class="hero" [ngClass]="{hero_handset: isHandset$ | async}"></div>
+        <div *ngIf="!showStepper" class="hero" [ngClass]="{hero__handset: (isHandset$ | async)}"></div>
         <!-- Add Content Here -->
         <ng-content></ng-content>
     </mat-sidenav-content>

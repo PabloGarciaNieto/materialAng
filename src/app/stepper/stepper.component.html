@@ -1,8 +1,11 @@
-<div class="title-container" *ngIf="!(isHandset$ | async)">
+<div *ngIf="congrats" class="congrats">
+    Congrats for your purchase!
+</div>
+<div class="title-container" *ngIf="!(isHandset$ | async) && !congrats">
     <h1>Wellcome to the payment process</h1>
     <span (click)="closeStepper()" class="close-stepper">&times;</span>
 </div>
-<mat-horizontal-stepper linear #stepper *ngIf="!(isHandset$ | async)">
+<mat-horizontal-stepper linear #stepper *ngIf="!(isHandset$ | async) && !congrats">
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Name</ng-template>
@@ -49,11 +52,11 @@
     </mat-step>
 </mat-horizontal-stepper>
 <!--////////////////////////////////////////////////////////////////////////////////  -->
-<div class="title-container title-container__handset" *ngIf="isHandset$ | async">
+<div class="title-container title-container__handset" *ngIf="(isHandset$ | async) && !congrats">
     <span (click)="closeStepper()" class="close-stepper close-stepper__handset">&times;</span>
     <h3 class="handset-title">Wellcome to the payment process</h3>
 </div>
-<mat-vertical-stepper linear #stepper *ngIf="isHandset$ | async">
+<mat-vertical-stepper linear #stepper *ngIf="(isHandset$ | async) && !congrats">
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Name</ng-template>

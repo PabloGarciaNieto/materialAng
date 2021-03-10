@@ -21,10 +21,11 @@ export class StepperComponent implements OnInit {
  );
 //--------
 @Output() showStepper = new EventEmitter<boolean>();
-
+public congrats: boolean;
   constructor(private _formBuilder: FormBuilder, private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit() {
+    this.congrats = false;
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -37,7 +38,8 @@ export class StepperComponent implements OnInit {
   }
 
   letChargeSomeMoney() {
-    this.showStepper.emit(false);
+    this.congrats = true;
+    setTimeout(() => { this.showStepper.emit(false); }, 4000);
   }
   closeStepper() {
     this.showStepper.emit(false);
