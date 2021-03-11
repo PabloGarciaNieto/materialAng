@@ -10,9 +10,10 @@ export class CardComponent implements OnInit {
 @Input() showCard: boolean = false;
 @Output() closeCard = new EventEmitter<boolean>();
 @Output() showStepper = new EventEmitter<boolean>();
+public value: number = 0;
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
 closeColorCard() {
   this.closeCard.emit(false);

@@ -9,6 +9,13 @@
         <mat-card-content>
             <p>{{ colorInfo.info }} lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus quas pariatur magnam sequi dolores commodi cumque!</p>
         </mat-card-content>
+        <form>
+            <mat-form-field>
+                <mat-label>Quantity</mat-label>
+                <input matInput [(ngModel)]="value" type="number" name="quantity" #quantity="ngModel" min="0">
+            </mat-form-field>
+        </form>
+        <p>{{ value }}</p>
         <mat-card-actions class="button-container">
             <button mat-raised-button color="primary" (click)="goToPayment()">Buy now</button>
         </mat-card-actions>
