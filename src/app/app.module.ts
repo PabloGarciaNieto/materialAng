@@ -22,6 +22,9 @@ import { StepperComponent } from './stepper/stepper.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AboutDialogComponent } from './about-dialog/about-dialog.component';
+import { ContactDialogComponent } from './contact-dialog/contact-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MainNavComponent,
     DataTableComponent,
     CardComponent,
-    StepperComponent
+    StepperComponent,
+    AboutDialogComponent,
+    ContactDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    AboutDialogComponent,
+    ContactDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
