@@ -10,10 +10,17 @@ export class CardComponent implements OnInit {
 @Input() showCard: boolean = false;
 @Output() closeCard = new EventEmitter<boolean>();
 @Output() showStepper = new EventEmitter<boolean>();
-public value: number = 0;
+public value: number = 1;
+public total: number;
   constructor() { }
 
   ngOnInit(){
+    this.total = this.colorInfo.price * this.value;
+    console.log(typeof this.total)
+  }
+  totalCalc() {
+    this.total = this.colorInfo.price * this.value;
+    this.total = parseFloat((Math.round(this.total * 100) / 100).toFixed(2)) ;
   }
 closeColorCard() {
   this.closeCard.emit(false);
@@ -23,5 +30,6 @@ goToPayment() {
   this.closeCard.emit(false);
   this.showStepper.emit(true);
 }
+
 
 }

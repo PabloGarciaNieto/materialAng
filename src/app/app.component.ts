@@ -22,6 +22,7 @@ export class AppComponent {
   theColorInfo($event: {}) {
     this.colorInfo = $event;
   }
+
   showTheStepper($event: boolean) {
     this.showStepper = $event;
   }
