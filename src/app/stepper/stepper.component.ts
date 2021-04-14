@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, AbstractControl, Validators} from '@angular/forms';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -9,11 +9,10 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./stepper.component.scss']
 })
 export class StepperComponent implements OnInit {
-
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
- //Detecta si el tamaño de pantalla se adecua al la query Handset
+ payForm: FormGroup;
+ /** Returns a FormArray with the name 'formArray'. */
+ get formArray(): AbstractControl | null { return this.payForm.get('formArray'); }
+ //Detecta si el tamaño de pantalla se adecua a la query Handset
  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
  .pipe(
    map(result => result.matches),
@@ -22,18 +21,23 @@ export class StepperComponent implements OnInit {
 //--------
 @Output() showStepper = new EventEmitter<boolean>();
 public congrats: boolean;
-  constructor(private _formBuilder: FormBuilder, private breakpointObserver: BreakpointObserver) {}
+  constructor(private fb: FormBuilder, private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit() {
     this.congrats = false;
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required]
+
+    this.payForm = this.fb.group({
+      formArray: this.fb.array([
+        this.fb.group({
+          nameFormCtrl: ['', Validators.required]
+        }),
+        this.fb.group({
+          addressFormCtrl: ['', Validators.required]
+        }),
+        this.fb.group({
+          cardNumFormCtrl: ['', Validators.required]
+        })
+      ])
     });
   }
 

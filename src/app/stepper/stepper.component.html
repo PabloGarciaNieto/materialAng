@@ -5,100 +5,92 @@
     <h1>Wellcome to the payment process</h1>
     <span (click)="closeStepper()" class="close-stepper">&times;</span>
 </div>
-<mat-horizontal-stepper linear #stepper *ngIf="!(isHandset$ | async) && !congrats">
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
+<form [formGroup]="payForm" *ngIf="!(isHandset$ | async) && !congrats">
+    <mat-horizontal-stepper formArrayName="formArray" linear #stepper>
+        <mat-step formGroupName="0" [stepControl]="formArray.get([0])">
             <ng-template matStepLabel>Name</ng-template>
             <mat-form-field>
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                <input matInput placeholder="Last name, First name" formControlName="nameFormCtrl" required>
             </mat-form-field>
             <div>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperNext type="button">Next</button>
             </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Address">
-        <form [formGroup]="secondFormGroup">
+        </mat-step>
+        <mat-step formGroupName="1" [stepControl]="formArray.get([1])" label="Address">
             <mat-form-field>
                 <mat-label>Address</mat-label>
-                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                <input matInput formControlName="addressFormCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
             </mat-form-field>
             <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperPrevious type="button">Back</button>
+                <button mat-button matStepperNext type="button">Next</button>
             </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="thirdFormGroup" label="Credit card number">
-        <form [formGroup]="thirdFormGroup">
+        </mat-step>
+        <mat-step formGroupName="2" [stepControl]="formArray.get([2])" label="Credit card number">
             <mat-form-field>
                 <mat-label>Credit card number</mat-label>
-                <input matInput formControlName="thirdCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                <input matInput formControlName="cardNumFormCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
             </mat-form-field>
             <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperPrevious type="button">Back</button>
+                <button mat-button matStepperNext type="button">Next</button>
             </div>
-        </form>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Payment</ng-template>
-        <p class="advise-text">You will be charge right after pressing the payment button.</p>
-        <div class="buttons-container">
-            <button mat-stroked-button matStepperPrevious color="primary">Back</button>
-            <button mat-raised-button color="warn" (click)="letChargeSomeMoney()">Payment</button>
-        </div>
-    </mat-step>
-</mat-horizontal-stepper>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Payment</ng-template>
+            <p class="advise-text">You will be charge right after pressing the payment button.</p>
+            <div class="buttons-container">
+                <button mat-stroked-button matStepperPrevious color="primary">Back</button>
+                <button mat-raised-button color="warn" (click)="letChargeSomeMoney()">Payment</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</form>
 <!--////////////////////////////////////////////////////////////////////////////////  -->
 <div class="title-container title-container__handset" *ngIf="(isHandset$ | async) && !congrats">
     <span (click)="closeStepper()" class="close-stepper close-stepper__handset">&times;</span>
     <h3 class="handset-title">Wellcome to the payment process</h3>
 </div>
-<mat-vertical-stepper linear #stepper *ngIf="(isHandset$ | async) && !congrats">
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
+<form [formGroup]="payForm" *ngIf="(isHandset$ | async) && !congrats">
+    <mat-vertical-stepper formArrayName="formArray" linear #stepper>
+        <mat-step formGroupName="0" [stepControl]="formArray.get([0])">
             <ng-template matStepLabel>Name</ng-template>
             <mat-form-field>
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                <input matInput placeholder="Last name, First name" formControlName="nameFormCtrl" required>
             </mat-form-field>
             <div>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperNext type="button">Next</button>
             </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Address">
-        <form [formGroup]="secondFormGroup">
+        </mat-step>
+        <mat-step formGroupName="1" [stepControl]="formArray.get([1])" label="Address">
             <mat-form-field>
                 <mat-label>Address</mat-label>
-                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                <input matInput formControlName="addressFormCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
             </mat-form-field>
             <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperPrevious type="button">Back</button>
+                <button mat-button matStepperNext type="button">Next</button>
             </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="thirdFormGroup" label="Credit card number">
-        <form [formGroup]="thirdFormGroup">
+        </mat-step>
+        <mat-step formGroupName="2" [stepControl]="formArray.get([2])" label="Credit card number">
             <mat-form-field>
                 <mat-label>Credit card number</mat-label>
-                <input matInput formControlName="thirdCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                <input matInput formControlName="cardNumFormCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
             </mat-form-field>
             <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperPrevious type="button">Back</button>
+                <button mat-button matStepperNext type="button">Next</button>
             </div>
-        </form>
-    </mat-step>
-    <mat-step class="putas">
-        <ng-template matStepLabel>Payment</ng-template>
-        <p class="advise-text advise-text__handset">You will be charge right after pressing the payment button.</p>
-        <div class="buttons-container buttons-container__handset">
-            <button mat-stroked-button color="primary" matStepperPrevious>Back</button>
-            <button mat-raised-button color="warn" (click)="letChargeSomeMoney()">Payment</button>
-        </div>
-    </mat-step>
-</mat-vertical-stepper>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Payment</ng-template>
+            <p class="advise-text advise-text__handset">You will be charge right after pressing the payment button.</p>
+            <div class="buttons-container buttons-container__handset">
+                <button mat-stroked-button color="primary" matStepperPrevious>Back</button>
+                <button mat-raised-button color="warn" (click)="letChargeSomeMoney()">Payment</button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+</form>
