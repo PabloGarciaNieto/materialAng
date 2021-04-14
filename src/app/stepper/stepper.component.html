@@ -5,13 +5,18 @@
     <h1>Wellcome to the payment process</h1>
     <span (click)="closeStepper()" class="close-stepper">&times;</span>
 </div>
+<!-- When using a single form for the stepper, matStepperPrevious and matStepperNext have to be set to type="button" in order to prevent submission of the form before all steps are completed. -->
 <form [formGroup]="payForm" *ngIf="!(isHandset$ | async) && !congrats">
+    Value: {{ payForm.value | json }}
     <mat-horizontal-stepper formArrayName="formArray" linear #stepper>
         <mat-step formGroupName="0" [stepControl]="formArray.get([0])">
             <ng-template matStepLabel>Name</ng-template>
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Last name, First name" formControlName="nameFormCtrl" required>
+                <mat-error *ngIf="formArray.get([0]).invalid && formArray.get([0]).touched">
+                    Enter at least 2 characters
+                </mat-error>
             </mat-form-field>
             <div>
                 <button mat-button matStepperNext type="button">Next</button>
@@ -30,7 +35,10 @@
         <mat-step formGroupName="2" [stepControl]="formArray.get([2])" label="Credit card number">
             <mat-form-field>
                 <mat-label>Credit card number</mat-label>
-                <input matInput formControlName="cardNumFormCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                <input matInput formControlName="cardNumFormCtrl" placeholder="Credit card number" required>
+                <mat-error *ngIf="formArray.get([2]).invalid && formArray.get([2]).touched">
+                    Enter a 16 digits number
+                </mat-error>
             </mat-form-field>
             <div>
                 <button mat-button matStepperPrevious type="button">Back</button>
@@ -41,8 +49,8 @@
             <ng-template matStepLabel>Payment</ng-template>
             <p class="advise-text">You will be charge right after pressing the payment button.</p>
             <div class="buttons-container">
-                <button mat-stroked-button matStepperPrevious color="primary">Back</button>
-                <button mat-raised-button color="warn" (click)="letChargeSomeMoney()">Payment</button>
+                <button mat-stroked-button matStepperPrevious color="primary" type="button">Back</button>
+                <button mat-raised-button color="warn" type="button" (click)="letChargeSomeMoney()">Payment</button>
             </div>
         </mat-step>
     </mat-horizontal-stepper>
@@ -88,8 +96,8 @@
             <ng-template matStepLabel>Payment</ng-template>
             <p class="advise-text advise-text__handset">You will be charge right after pressing the payment button.</p>
             <div class="buttons-container buttons-container__handset">
-                <button mat-stroked-button color="primary" matStepperPrevious>Back</button>
-                <button mat-raised-button color="warn" (click)="letChargeSomeMoney()">Payment</button>
+                <button mat-stroked-button color="primary" matStepperPrevious type="button">Back</button>
+                <button mat-raised-button color="warn" type="button" (click)="letChargeSomeMoney()">Payment</button>
             </div>
         </mat-step>
     </mat-vertical-stepper>
