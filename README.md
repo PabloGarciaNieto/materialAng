@@ -1,8 +1,5 @@
-# Adding a material component
-ng generate @angular/material:material-nav --name=main-nav
-
 # MaterialAng
-
+This small app shows how to implement and customize a Material theme
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
 ## Development server
